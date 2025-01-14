@@ -1,0 +1,98 @@
+/* General styles for slider items */
+.slider__item {
+  width: 100vw;
+  /* Full viewport width */
+  height: 650px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Specific styles for each slider item with background images */
+.slider__item-01 {
+  background: linear-gradient(rgba(0, 13, 107, 0.5), rgba(0, 13, 107, 0.5)),
+    url("../../assets/slider-image/slider-1.jpg");
+  /* Adjust path as per your project structure */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slider__item-02 {
+  background: linear-gradient(rgba(0, 13, 107, 0.5), rgba(0, 13, 107, 0.5)),
+    url("../../assets/slider-image/slider-2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slider__item-03 {
+  background: linear-gradient(rgba(0, 13, 107, 0.5), rgba(0, 13, 107, 0.5)),
+    url("../../assets/slider-image/slider-3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Hero slider styling */
+.hero__slider {
+  overflow: hidden;
+}
+
+/* Slider content padding */
+.slider__content {
+  padding-top: 150px;
+}
+
+/* Heading styles */
+.slider__content h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+/* Reserve button styles */
+.reserve__btn {
+  background: #fff !important;
+  color: #000d6b !important;
+  border: none;
+  outline: none;
+}
+
+/* Reserve button link styles */
+.reserve__btn a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #000d6b;
+}
+
+/* Hover effect for reserve button */
+.reserve__btn:hover {
+  background: #000d6b;
+  color: #fff;
+}
+
+/* Responsive styles for screens smaller than 992px */
+@media only screen and (max-width: 992px) {
+  .slider__item {
+    height: 530px;
+  }
+
+  .slider__content {
+    margin-top: -50px;
+  }
+
+  .slider__content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive styles for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .slider__item {
+    height: 450px;
+  }
+
+  .slider__content h1 {
+    font-size: 1.5rem;
+  }
+}

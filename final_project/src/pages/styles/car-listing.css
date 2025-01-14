@@ -1,0 +1,70 @@
+/* CarListing component styles */
+.car-listing {
+  padding: 20px;
+  background-color: #222222; /* Darker background for better contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for a polished look */
+  color: #FFD700; /* Yellow text for theme consistency */
+}
+
+.car-listing select {
+  width: 100%;
+  max-width: 25%; /* Adjust to 25% of the screen width */
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #FFD700; /* Yellow border for emphasis */
+  border-radius: 5px;
+  outline: none;
+  margin-left: 10px; /* Add margin to create gap */
+  background-color: #333333; /* Darker background for dropdown */
+  color: #FFD700; /* Yellow text */
+  transition: border-color 0.3s ease;
+}
+
+.car-listing select:hover {
+  border-color: #e5c100; /* Slightly brighter yellow on hover */
+}
+
+.car-listing .form-select-sm {
+  height: auto;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  background-color: #444444; /* Slightly lighter background */
+  color: #FFD700; /* Yellow text */
+  border: 1px solid #FFD700; /* Yellow border */
+}
+
+.car-listing .form-select-sm option {
+  font-size: 0.9rem;
+  background-color: #333333; /* Darker background */
+  color: #FFD700; /* Yellow text */
+}
+
+.car-listing .no-cars-found {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFD700; /* Yellow text */
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .car-listing select {
+      font-size: 0.9rem;
+      max-width: 50%; /* Adjust smaller width for smaller screens */
+  }
+}
+
+/* Adjusting the span to be in a single line */
+.d-flex.align-items-center.gap-2 {
+  white-space: nowrap; /* Prevent wrapping */
+  text-overflow: ellipsis; /* Show ellipsis (...) for overflow */
+  margin-right: 10px; /* Add margin between text and dropdown */
+  color: #FFD700; /* Yellow text */
+}
+
+/* Making the "Sort By" text bold */
+.sort-by-text {
+  font-weight: bold;
+  color: #FFD700; /* Yellow text */
+}

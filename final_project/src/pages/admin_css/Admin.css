@@ -1,0 +1,54 @@
+/* src/styles/Profile.css */
+
+.profile-page {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+    width: 250px; /* Width of the sidebar */
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    border-right: 1px solid #dee2e6; /* Border to separate from content */
+    font-family: 'Times New Roman', Times, serif; /* Font family */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    height: 100vh; /* Full height of viewport */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.profile-content {
+    flex: 1; /* Take remaining space */
+    padding: 20px; /* Padding around content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.sidebar-menu-item {
+    color: black; /* Font color */
+    font-size: 20px; /* Font size */
+    margin-bottom: 10px; /* Space between items */
+    display: flex;
+    align-items: center; /* Align items center vertically */
+    padding: 10px;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text horizontally */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+.sidebar-menu-item:hover {
+    background-color: #e9ecef; /* Background color on hover */
+    color: #212529; /* Text color on hover */
+}
+
+.sidebar-menu-item i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.2rem; /* Icon size */
+    font-weight: bold; /* Make icons bold if the font supports it */
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column; /* Ensure content is stacked vertically */
+}

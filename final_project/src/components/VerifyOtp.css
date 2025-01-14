@@ -1,0 +1,71 @@
+.verify-otp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+  
+  .verify-otp-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .verify-otp-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .verify-otp-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .verify-otp-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .verify-otp-container button:hover {
+    background-color: #555;
+}
+  
+  .verify-otp-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .image1 {
+    position: absolute;
+    /* Position the first image absolutely */
+    bottom: 10px;
+    /* Distance from the bottom */
+    right: 10px;
+    /* Distance from the right */
+    width: 500px;
+    /* Set the width of the first image */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.image2 {
+    position: absolute;
+    /* Position the second image absolutely */
+    bottom: 10px;
+    /* Distance from the bottom */
+    left: 10px;
+    /* Distance from the right */
+    width: 500px;
+    /* Set the width of the second image */
+    height: auto;
+    /* Maintain aspect ratio */
+}

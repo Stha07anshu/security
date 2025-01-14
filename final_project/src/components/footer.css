@@ -1,0 +1,111 @@
+.footer {
+  background: #000d6b;
+  padding-top: 50px;
+  padding-bottom: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff; /* Added to apply text color to the whole footer */
+}
+
+.footer__logo i {
+  color: #fff;
+  font-weight: 400;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer__logo span {
+  color: #fff;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer__logo-content {
+  color: #fff;
+  margin-top: 15px;
+  line-height: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.quick__link {
+  border: none !important;
+  background: transparent !important;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.quick__link a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+  transition: 0.3s;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.quick__link a:hover {
+  color: #f9a826;
+}
+
+.footer__link-title {
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.office__info {
+  color: #fff;
+  font-weight: 300;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid #7c8a972f;
+  border-radius: 50px;
+  background: #020a4de9;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff; /* Added to apply text color within the newsletter */
+}
+
+.newsletter input {
+  background: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.newsletter span i {
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer__bottom {
+  border-top: 1px solid #f7f5f52f;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff; /* Added to apply text color within the footer bottom */
+}
+
+@media only screen and (max-width: 768px) {
+  .footer__logo-content {
+    font-size: 0.8rem;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .quick__link,
+  .office__info {
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .footer__link-title {
+    font-size: 1rem;
+    margin-top: 15px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .footer__bottom p {
+    font-size: 0.7rem;
+    font-family: 'Times New Roman', Times, serif;
+  }
+}

@@ -1,0 +1,141 @@
+/* car-item.css */
+
+/* Card container styling */
+.car__item {
+  border: 1px solid #7c8a9736;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for card */
+.car__item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Card image styling */
+.car__img img {
+  width: 100%;
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 5px; /* Ensure image corners match card corners */
+}
+
+/* Card content styling */
+.car__item-content {
+  margin-top: 15px;
+}
+
+.section__title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.rent__price {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Info section styling */
+.car__item-info {
+  font-size: 1rem;
+  color: #666;
+}
+
+.car__item-info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.car__item-info i {
+  color: #f9a826;
+}
+
+/* Button styling */
+.car__item-btn {
+  border: none;
+  outline: none;
+  background: #000d6b;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.car__item-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Specific button styling */
+.car__btn-rent {
+  background: #000d6b;
+  border-radius: 5px 0 0 5px;
+}
+
+.car__btn-details {
+  background: #f9a826;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Responsive design adjustments */
+@media only screen and (max-width: 992px) {
+  .car__item {
+    padding: 15px;
+  }
+
+  .section__title {
+    font-size: 1.4rem;
+  }
+
+  .rent__price {
+    font-size: 1.1rem;
+  }
+
+  .car__item-info {
+    font-size: 0.9rem;
+  }
+
+  .car__item-info i {
+    font-size: 1rem;
+  }
+
+  .car__item-btn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .car__item {
+    padding: 10px;
+  }
+
+  .section__title {
+    font-size: 1.2rem;
+  }
+
+  .rent__price {
+    font-size: 1rem;
+  }
+
+  .car__item-info {
+    font-size: 0.8rem;
+  }
+
+  .car__item-info i {
+    font-size: 0.9rem;
+  }
+
+  .car__item-btn {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

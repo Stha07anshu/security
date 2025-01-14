@@ -1,0 +1,56 @@
+.background {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* Make the container position relative */
+    min-height: 100vh;
+    /* Ensure it covers the full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image1 {
+    position: absolute;
+    /* Position the first image absolutely */
+    bottom: 10px;
+    /* Distance from the bottom */
+    right: 10px;
+    /* Distance from the right */
+    width: 500px;
+    /* Set the width of the first image */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.image2 {
+    position: absolute;
+    /* Position the second image absolutely */
+    bottom: 10px;
+    /* Distance from the bottom */
+    left: 10px;
+    /* Distance from the right */
+    width: 500px;
+    /* Set the width of the second image */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.card-container {
+    background: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent background for the card */
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    /* Slightly transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

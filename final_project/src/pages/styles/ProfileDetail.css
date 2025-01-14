@@ -1,0 +1,16 @@
+/* src/styles/ProfileDetail.css */
+
+.profile-details {
+    flex: 1;
+    padding: 20px;
+    margin-top: 60px; /* Add margin to move the content downwards */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.card {
+    margin-top: 20px; /* Add margin to move the card downwards */
+}
+
+.card-body {
+    padding: 20px; /* Adjust padding as needed */
+}

@@ -1,0 +1,37 @@
+/* Navbar CSS */
+
+.bg-light-custom {
+  background-color: #f8f9fa !important; /* Adjust the shade here to your preference */
+}
+
+.navbar {
+  font-size: 1.2rem; /* Increase the font size for a larger navbar */
+}
+
+.navbar-brand {
+  font-size: 2rem; /* Make the brand text larger */
+  font-family: 'Times New Roman', Times, serif; /* Apply Times New Roman font */
+  font-weight: bold; /* Make the brand text bold */
+}
+
+.offcanvas-light .offcanvas-header,
+.offcanvas-light .offcanvas-body {
+  background-color: #f8f9fa; /* Adjust offcanvas background color */
+}
+
+.navbar-nav .nav-link,
+.dropdown-menu .dropdown-item {
+  font-weight: bold; /* Make all menu links bold */
+  font-family: 'Times New Roman', Times, serif; /* Apply Times New Roman font */
+  color: #000; /* Set text color to black */
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa; /* Adjust dropdown menu background color */
+  font-family: 'Times New Roman', Times, serif; /* Apply Times New Roman font */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba(0, 0, 0, 0.1); /* Optional hover/focus background color */
+}

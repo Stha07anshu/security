@@ -1,0 +1,18 @@
+.payment label {
+  font-weight: 600;
+  color: #000d6b;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.payment button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: #000d6b;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.payment-icon {
+  width: 20px; /* Adjust the width as needed */
+  height: auto;
+}

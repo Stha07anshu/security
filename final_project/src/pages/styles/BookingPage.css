@@ -1,0 +1,132 @@
+/* src/styles/BookingsPage.css */
+
+.bookings-page {
+    padding: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f4f4;
+}
+.booking-card button {
+    border: none;
+    border-radius: 20px; /* Slightly circular button */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 15px; /* Space between buttons */
+    text-align: center;
+}
+.bookings-page h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.error {
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.update-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+.update-popup h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.update-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.update-popup label {
+    font-weight: bold;
+}
+
+.update-popup input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.update-popup button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-popup button.update {
+    background-color: #5bc0de; /* Light blue */
+    margin-right: 10px; /* Space between buttons */
+}
+
+.update-popup button.update:hover {
+    background-color: #31b0d5;
+    transform: translateY(-2px);
+}
+
+.update-popup button.delete {
+    background-color: #d9534f; /* Danger red */
+}
+
+.update-popup button.delete:hover {
+    background-color: #c9302c;
+    transform: translateY(-2px);
+}
+
+.booking-card button.delete {
+    background-color: #d9534f;
+     transform: translateY(-2px);
+ /* Danger red */
+}
+
+
+.booking-card button.update {
+    background-color: #5bc0de; /* Light blue */
+    transform: translateY(-2px);
+}
+

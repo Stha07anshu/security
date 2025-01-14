@@ -1,0 +1,40 @@
+/* src/styles/Slider.css */
+
+.sidebar {
+    width: 250px; /* Adjust to fit your design */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling within the sidebar */
+    background-color: #f8f9fa; /* Example background color */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    position: fixed; /* Keep sidebar fixed on the left */
+    top: 0;
+    left: 0;
+    padding: 1rem; /* Optional padding */
+    display: flex;
+    flex-direction: column; /* Ensure menu items are stacked vertically */
+    z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+.sidebar-link {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+    border-radius: 0.25rem; /* Rounded corners for hover effect */
+    font-weight: bold; /* Make text bold */
+}
+
+.sidebar-link:hover {
+    background-color: #e9ecef; /* Background color on hover */
+}
+
+.sidebar-icon {
+    font-size: 1.2rem; /* Adjust icon size */
+    font-weight: bold; /* Make icons bold, if the icon font supports this */
+}
+
+.sidebar-text {
+    font-weight: bold; /* Ensure text is bold */
+}

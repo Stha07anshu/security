@@ -107,13 +107,36 @@ const loginUser = async (req, res) => {
             });
         }
 
-        // Validate the password
-        if (!await comparePassword(password, user.password)) {
+        // Check if the account is locked due to failed login attempts
+        if (user.lockUntil && user.lockUntil > Date.now()) {
             return res.json({
                 success: false,
-                message: "Incorrect Password!"
+                message: "Account locked. Please try again later."
             });
         }
+
+        // Validate the password
+        if (!await comparePassword(password, user.password)) {
+            // Increment failed login attempts
+            user.failedAttempts += 1;
+
+            // Lock the account if failed attempts reach the threshold
+            if (user.failedAttempts >= 10) {
+                user.lockUntil = Date.now() + 15 * 60 * 1000; // Lock for 15 minutes
+            }
+
+            await user.save(); // Save the user with the updated failedAttempts and lockUntil
+
+            return res.json({
+                success: false,
+                message: "Incorrect Password! Your account will be locked after 10 failed attempts."
+            });
+        }
+
+        // Reset failed login attempts on successful login
+        user.failedAttempts = 0;
+        user.lockUntil = null; // Unlock the account
+        await user.save();
 
         // Generate JWT token with expiration
         const token = jwt.sign(
@@ -122,8 +145,8 @@ const loginUser = async (req, res) => {
             { expiresIn: '1h' } // Token expires in 1 hour
         );
 
-        // Send the token, userData, and success message to the user
-        res.cookie('auth_token', token, { httpOnly: true, secure: true, maxAge: 3600000 }); // Optional: Send token in a secure cookie
+        // Send the token and userData to the user
+        res.cookie('auth_token', token, { httpOnly: true, secure: true, maxAge: 3500000 });
         res.json({
             success: true,
             message: "Login Successful!",

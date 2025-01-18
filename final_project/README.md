@@ -67,7 +67,6 @@ Appendix
 ![image](https://github.com/user-attachments/assets/d89707a0-5e4c-47b3-b855-4d5cb04fcad7)
 ![image](https://github.com/user-attachments/assets/8d14a9c0-b6cc-426c-82e8-53ce66e227bd)
 ![image](https://github.com/user-attachments/assets/cbb4c823-f12f-4798-a8c0-df630500bf97)
-![image](https://github.com/user-attachments/assets/5fd532cb-7bca-4e78-ae56-894bda081857)
 
 
 

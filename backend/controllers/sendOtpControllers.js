@@ -26,7 +26,7 @@ const sendOtp = async (req, res) => {
 
   const otp = generateOtp();
   user.otp = otp;
-  user.otpExpiry = Date.now() + 3600000; // 1 hour expiry
+  user.otpExpiry = Date.now() + 3500000; // 1 hour expiry
   await user.save();
 
   const mailOptions = {

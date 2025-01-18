@@ -64,7 +64,6 @@ This project was developed by Anshu Shrestha.
 Appendix
 ![image](https://github.com/user-attachments/assets/08d83874-2e1e-4671-bd07-952fc707c1f2)
 ![image](https://github.com/user-attachments/assets/77995a2b-1a5f-4706-a4dd-b9dc5c0b14b1)
-![image](https://github.com/user-attachments/assets/d89707a0-5e4c-47b3-b855-4d5cb04fcad7)
 
 
 

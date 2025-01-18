@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { registerUserApi } from '../../api/Api';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './Register.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
+import zxcvbn from 'zxcvbn'; 
+import './Register.css';
 
 const Register = () => {
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const navigate = useNavigate();
 
     // State variables
     const [firstName, setFirstName] = useState('');
@@ -14,8 +15,8 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); // State for password visibility
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     // State for Error
     const [firstNameError, setFirstNameError] = useState('');
@@ -23,6 +24,22 @@ const Register = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+    // Password strength state
+    const [passwordStrength, setPasswordStrength] = useState('');
+    const [passwordStrengthColor, setPasswordStrengthColor] = useState('');
+    const [strengthPercentage, setStrengthPercentage] = useState(0);
+
+    // Password validation conditions
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [hasNumber, setHasNumber] = useState(false);
+    const [hasUppercase, setHasUppercase] = useState(false);
+    const [hasLowercase, setHasLowercase] = useState(false);
+    const [hasSpecialChar, setHasSpecialChar] = useState(false);
+    const [minLength, setMinLength] = useState(false);
+
+    // State to check if password field is clicked or interacted with
+    const [passwordClicked, setPasswordClicked] = useState(false);
 
     // Handle input changes
     const handleFirstname = (e) => {
@@ -34,11 +51,49 @@ const Register = () => {
     };
 
     const handleEmail = (e) => {
-        setEmail(e.target.value);
+        const emailValue = e.target.value;
+        setEmail(emailValue);
+        // Email regex validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setIsEmailValid(emailPattern.test(emailValue));
     };
 
     const handlePassword = (e) => {
-        setPassword(e.target.value);
+        const pass = e.target.value;
+        setPassword(pass);
+        const result = zxcvbn(pass);
+
+        // Set password strength based on score
+        switch(result.score) {
+            case 0:
+            case 1:
+                setPasswordStrength('Weak');
+                setPasswordStrengthColor('red');
+                setStrengthPercentage(25);
+                break;
+            case 2:
+                setPasswordStrength('Medium');
+                setPasswordStrengthColor('orange');
+                setStrengthPercentage(50);
+                break;
+            case 3:
+            case 4:
+                setPasswordStrength('Strong');
+                setPasswordStrengthColor('green');
+                setStrengthPercentage(100);
+                break;
+            default:
+                setPasswordStrength('');
+                setPasswordStrengthColor('');
+                setStrengthPercentage(0);
+        }
+
+        // Check for password strength conditions
+        setHasNumber(/\d/.test(pass));
+        setHasUppercase(/[A-Z]/.test(pass));
+        setHasLowercase(/[a-z]/.test(pass));
+        setHasSpecialChar(/[^A-Za-z0-9]/.test(pass));
+        setMinLength(pass.length >= 8);
     };
 
     const handleConfirmPassword = (e) => {
@@ -55,7 +110,7 @@ const Register = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    // Validation function
+    // Validate function
     const validate = () => {
         let isValid = true;
         if (firstName.trim() === '') {
@@ -101,8 +156,7 @@ const Register = () => {
             return;
         }
 
-        // Making Api Request
-        // Making JSON Object of register data
+        // API Request
         const data = {
             firstName: firstName,
             lastName: lastName,
@@ -111,7 +165,6 @@ const Register = () => {
         };
 
         registerUserApi(data).then((res) => {
-            // Success :true/false, Message
             if (res.data.success === true) {
                 toast.success(res.data.message);
                 navigate('/login'); 
@@ -119,9 +172,9 @@ const Register = () => {
                 toast.error(res.data.message);
             }
         }).catch((err) => {
-            console.log(err)
-            toast.error('Internal Server Error')
-        })
+            console.log(err);
+            toast.error('Internal Server Error');
+        });
     };
 
     return (
@@ -152,29 +205,62 @@ const Register = () => {
                                     <label className='form-label'>Email Address</label>
                                     <input onChange={handleEmail} type="email" className='form-control' placeholder='Enter your email address' />
                                     {emailError && <p className='text-danger'>{emailError}</p>}
+                                    {isEmailValid && <p className='text-success'>✔ Valid Email</p>}
+                                    {!isEmailValid && email && <p className='text-danger'>✘ Invalid Email</p>}
                                 </div>
                                 {/* Password */}
                                 <div className='mb-3'>
                                     <label className='form-label'>Password</label>
                                     <div className="input-group">
-                                        <input onChange={handlePassword} type={showPassword ? "text" : "password"} className='form-control' placeholder='Enter your password' />
+                                        <input 
+                                            onChange={handlePassword} 
+                                            onFocus={() => setPasswordClicked(true)} 
+                                            type={showPassword ? "text" : "password"} 
+                                            className='form-control' 
+                                            placeholder='Enter your password' 
+                                        />
                                         <button className="btn btn-outline-secondary" type="button" onClick={togglePasswordVisibility}>
                                             {showPassword ? "Hide" : "Show"}
                                         </button>
                                     </div>
                                     {passwordError && <p className='text-danger'>{passwordError}</p>}
+                                    
                                 </div>
                                 {/* Confirm Password */}
                                 <div className='mb-3'>
                                     <label className='form-label'>Confirm Password</label>
                                     <div className="input-group">
-                                        <input onChange={handleConfirmPassword} type={showConfirmPassword ? "text" : "password"} className='form-control' placeholder='Enter your confirm password' />
+                                        <input 
+                                            onChange={handleConfirmPassword} 
+                                            type={showConfirmPassword ? "text" : "password"} 
+                                            className='form-control' 
+                                            placeholder='Enter your confirm password' 
+                                        />
                                         <button className="btn btn-outline-secondary" type="button" onClick={toggleConfirmPasswordVisibility}>
                                             {showConfirmPassword ? "Hide" : "Show"}
                                         </button>
                                     </div>
                                     {confirmPasswordError && <p className='text-danger'>{confirmPasswordError}</p>}
                                 </div>
+                                {passwordClicked && (
+                                        <div>
+                                            {/* Progress Bar */}
+                                            <div className="progress mb-2">
+                                                <div className={`progress-bar ${passwordStrengthColor}`} role="progressbar" style={{ width: `${strengthPercentage}%` }}></div>
+                                            </div>
+
+                                            {/* Password Strength Checklist */}
+                                            <p>Your password must contain:</p>
+                                            <ul>
+                                                <li className={minLength ? 'text-success' : 'text-danger'}>✔ Minimum number of characters is 8.</li>
+                                                <li className={hasLowercase ? 'text-success' : 'text-danger'}>✔ Should contain lowercase.</li>
+                                                <li className={hasUppercase ? 'text-success' : 'text-danger'}>✔ Should contain uppercase.</li>
+                                                <li className={hasNumber ? 'text-success' : 'text-danger'}>✔ Should contain numbers.</li>
+                                                <li className={hasSpecialChar ? 'text-success' : 'text-danger'}>✔ Should contain special characters.</li>
+                                            </ul>
+                                        </div>
+                                    )}
+
                                 {/* Submit Button */}
                                 <button onClick={handleSubmit} className='btn btn-dark mt-2 w-100'>Create Account</button>
                             </form>

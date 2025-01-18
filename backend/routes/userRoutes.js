@@ -11,7 +11,7 @@ const resetPasswordControllers = require('../controllers/resetPasswordController
 router.post('/create', userControllers.createUser);
 
 // Login user API
-router.post('/login', userControllers.loginUser,userControllers.loginLimiter);
+router.post('/login', userControllers.loginLimiter, userControllers.loginUser);
 
 // // Send OTP route
 

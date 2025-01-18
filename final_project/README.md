@@ -61,7 +61,7 @@ KHALTI_SECRET_KEY: The secret key for Khalti payment integration (used for secur
 KHALTI_PUBLIC_KEY: The public key for Khalti payment integration (used for client-side transactions).
 Author
 This project was developed by Anshu Shrestha.
-Appendix
+
 
 
 

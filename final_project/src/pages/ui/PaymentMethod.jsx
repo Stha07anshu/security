@@ -12,7 +12,7 @@ const PaymentMethod = () => {
       return;
     }
 
-    const url = "http://localhost:5000/api/orders/create";
+    const url = "https://localhost:5000/api/orders/create";
     const data = {
       amount: 100, // Example amount, update as needed
       products: [{ product: "test", amount: 100, quantity: 1 }],

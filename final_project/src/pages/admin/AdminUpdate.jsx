@@ -204,7 +204,7 @@ const AdminUpdate = () => {
                             className='img-fluid object-fit-cover rounded-4'
                             height={'200px'}
                             width={'200px'}
-                            src={`http://localhost:5000/products/${oldImage}`}
+                            src={`https://localhost:5000/products/${oldImage}`}
                             alt="Old Product"
                         />
                     )}

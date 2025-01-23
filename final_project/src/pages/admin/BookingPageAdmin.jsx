@@ -11,7 +11,7 @@ const BookingsPageAdmin = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/car/all_bookings", {
+                const response = await axios.get("https://localhost:5000/api/car/all_bookings", {
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`,
                       'Content-Type': 'application/json'

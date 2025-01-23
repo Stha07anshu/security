@@ -70,7 +70,7 @@ const ProductDetails = () => {
           <Row>
             <Col lg="6">
               <img
-                src={`http://localhost:5000/products/${product.productImage}`} // Adjust the path as needed
+                src={`https://localhost:5000/products/${product.productImage}`} // Adjust the path as needed
                 alt={product.productName}
                 className="w-100"
               />

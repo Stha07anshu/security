@@ -1,36 +1,58 @@
-// 1.Imporing express
+// 1. Importing required packages
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./database/database');
-const cors = require('cors')
-const fileUpload = require('express-fileupload')
-const path  = require('path')
-const esewaRouter = require('./routes/esewaRoutes')
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
+const path = require('path');
+const esewaRouter = require('./routes/esewaRoutes');
+const winston = require('winston'); // Import Winston
+const https = require("https");
+const fs = require("fs");
+const morgan = require("morgan")
 
 // 2. Creating an express app
 const app = express();
 
+// Configuring Winston logger
+const logger = winston.createLogger({
+  level: 'info',
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'logfile.log' })
+  ]
+});
+
+
+const credentials = {
+  key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'ssl', 'certificate.pem'))
+};
+
 // JSON Config
-app.use(express.json())
+app.use(express.json());
 
 // File Upload Config
-app.use(fileUpload())
+app.use(fileUpload());
 
-// Make a public folder access to outside
-app.use(express.static('./public'))
+app.use(morgan("dev"));
 
-
+// Make a public folder accessible to outside
+app.use(express.static('./public'));
 
 // CORS Config
 const corsOptions = {
-    origin : true,
-    credentials : true, // dont forget 's'
-    optionSuccessStatus : 200
-}
-app.use(cors(corsOptions))
+    origin: true,
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    optionSuccessStatus: 200
+  };
+  
+  app.use(cors(corsOptions));
+  
 
-// configuration dotenv
-dotenv.config()
+// Configuration dotenv
+dotenv.config();
 
 // Connecting to the database
 connectDB();
@@ -38,49 +60,41 @@ connectDB();
 // 3. Defining the port
 const PORT = process.env.PORT;
 
-
-
 // 4. Creating a test route or endpoint
-app.get('/test', (req,res)=>{
-    res.send("Test Api is Working ...!")
-})
+app.get('/test', (req, res) => {
+  logger.info('Test API accessed'); // Log the test route access
+  res.send('Test API is Working ...!');
+});
+
+// Log all API requests
+app.use((req, res, next) => {
+  logger.info(`Request: ${req.method} ${req.url}`); // Log the request details
+  next();
+});
 
 // Configuring routes
-app.use('/api/user', require('./routes/userRoutes'))
-app.use('/api/product', require('./routes/productRoutes'))
+app.use('/api/user', require('./routes/userRoutes'));
+app.use('/api/product', require('./routes/productRoutes'));
 app.use('/api/car', require('./routes/carRoutes'));
-app.use('/api/reservations',require('./routes/reservationRoutes'));
-app.use('/api/contacts',require('./routes/contactRoutes'));
-app.use('/api/esewa',require('./routes/esewaRoutes'));
-app.use('/api/mobile',require('./routes/mobileBookingRoutes'));
+app.use('/api/reservations', require('./routes/reservationRoutes'));
+app.use('/api/contacts', require('./routes/contactRoutes'));
+app.use('/api/esewa', require('./routes/esewaRoutes'));
+app.use('/api/mobile', require('./routes/mobileBookingRoutes'));
 
-// route reult
-// http://localhost:5000/api/product/create
-
-
-// http://localhost:5000/api/user/create
-
-
-// Starting the server
-app.listen(PORT, ()=>{
-    console.log(`Server-app is Running on port ${PORT}`)
-})
+// Error handling middleware to log errors
+app.use((err, req, res, next) => {
+  logger.error(`Error: ${err.message}`, { stack: err.stack }); // Log errors
+  res.status(500).send('Something went wrong!');
+});
 
 
-// API URL
+
+https.createServer(credentials, app).listen(PORT, () => {
+  console.log('Server is running on https://localhost:5000',);
+});
+
+// API URL for testing
 // http://localhost:5500/test
 
- 
-// Task
-
-// Controller - Routes - Index.js
-// (Make a productController.js)
-// (Make a productRoutes.js)
-// (Link to index.js)
-
-// http://localhost:5000/api/product/create
-// Response : Product API is Working ...!
-
-
-// exporting for testing
+// Exporting for testing
 module.exports = app;

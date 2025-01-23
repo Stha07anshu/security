@@ -202,7 +202,7 @@ const AdminDashboard = () => {
                         {products.map((singleProduct) => (
                             <tr key={singleProduct._id}>
                                 <td>
-                                    <img height={'40px'} width={'40px'} src={`http://localhost:5000/products/${singleProduct.productImage}`} alt="" />
+                                    <img height={'40px'} width={'40px'} src={`https://localhost:5000/products/${singleProduct.productImage}`} alt="" />
                                 </td>
                                 <td>{capitalizeFirstLetter(singleProduct.productName)}</td>
                                 <td>NPR.{singleProduct.productPrice}</td>

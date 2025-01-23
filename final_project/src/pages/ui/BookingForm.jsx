@@ -29,7 +29,7 @@ const BookingForm = ({productPrice}) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/reservations/create", formData, {
+      const response = await axios.post("https://localhost:5000/api/reservations/create", formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'

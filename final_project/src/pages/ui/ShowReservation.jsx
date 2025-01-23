@@ -11,7 +11,7 @@ const ReservationsPage = () => {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/reservations/all_reservations", {
+                const response = await axios.get("https://localhost:5000/api/reservations/all_reservations", {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         'Content-Type': 'application/json'
